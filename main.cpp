@@ -49,7 +49,7 @@ int main()
             cin >> x.jenis_motor;
             cin.ignore();
 
-            cout << "Insert First / Insert Last (F/N)as: ";
+            cout << "Insert First / Insert Last (F/N): ";
             string choose;
             cin >> choose;
 
