@@ -49,7 +49,7 @@ int main()
             cin >> x.jenis_motor;
             cin.ignore();
 
-            cout << "Insert First / Insert Last (F/N): ";
+            cout << "Insert First / Insert Last (F/L): ";
             string choose;
             cin >> choose;
 
@@ -178,7 +178,7 @@ int main()
             cin.ignore();
             cout << "Masukkan ID Data Driver Yang Ingin Diubah : ";
             string ID;
-            getline(cin, ID);
+            cin >> ID;
             cout << "Masukkan Nama Penumpang Yang Ingin Diubah : ";
             string nama;
             cin >> nama;

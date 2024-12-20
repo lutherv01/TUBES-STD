@@ -113,13 +113,14 @@ void showDriver(ListDriver L)
         cout << "Tidak ada Driver!" << endl;
     } else {
         while (D != NULL){
-            cout << "Data Driver: " << endl;
-            cout << "ID: " << info(D).id_driver << endl;
-            cout << "Nama: " << info(D).nama << endl;
-            cout << "Nomor Kontak: " << info(D).no_hp << endl;
-            cout << "Nomor Plat Motor: " << info(D).plat_nomor << endl;
-            cout << "Jenis Motor: " << info(D).jenis_motor << endl;
-            cout << endl;
+            cout << "========================" << endl;
+            cout << "Data Driver      : " << endl;
+            cout << "ID               : " << info(D).id_driver << endl;
+            cout << "Nama             : " << info(D).nama << endl;
+            cout << "Nomor Kontak     : " << info(D).no_hp << endl;
+            cout << "Nomor Plat Motor : " << info(D).plat_nomor << endl;
+            cout << "Jenis Motor      : " << info(D).jenis_motor << endl;
+            cout << "========================" << endl;
             D = next(D);
         }
     }
@@ -149,11 +150,13 @@ void showAll(ListDriver &L)
     } else {
         cout << "Data Driver: " << endl;
         while (D != NULL){
-            cout << "ID Driver: " << info(D).id_driver << endl;
-            cout << "Nama Driver: " << info(D).nama << endl;
+            cout << "========================" << endl;
+            cout << "ID Driver          : " << info(D).id_driver << endl;
+            cout << "Nama Driver        : " << info(D).nama << endl;
             cout << "Nomor Kontak Driver: " << info(D).no_hp << endl;
-            cout << "Nomor Plat Motor: " << info(D).plat_nomor << endl;
-            cout << "Jenis Motor: " << info(D).jenis_motor << endl;
+            cout << "Nomor Plat Motor   : " << info(D).plat_nomor << endl;
+            cout << "Jenis Motor        : " << info(D).jenis_motor << endl;
+            cout << "========================" << endl;
             cout << endl;
 
             cout << "Data Penumpang Dari Driver " << info(D).id_driver <<  ": " << endl;
@@ -163,11 +166,12 @@ void showAll(ListDriver &L)
                 cout << "Tidak ada Penumpang!" << endl;
             } else {
                 while (p != NULL){
-                    cout << "Nama Penumpang: " << info(p).nama << endl;
-                    cout << "Nomor Kontak Penumpang: " << info(p).no_hp << endl;
+                    cout << "========================" << endl;
+                    cout << "Nama Penumpang    : " << info(p).nama << endl;
+                    cout << "Nomor Kontak      : " << info(p).no_hp << endl;
                     cout << "Lokasi Penjemputan: " << info(p).dari << endl;
                     cout << "Lokasi Pengantaran: " << info(p).ke << endl;
-                    cout << "Biaya Pengantaran: " << info(p).biaya << endl;
+                    cout << "Biaya Pengantaran : " << info(p).biaya << endl;
                     cout << "========================" << endl;
                     p = next(p);
                 }
@@ -185,19 +189,22 @@ void updateDriver(ListDriver &L, string id_driver)
         cout << "Driver tidak ditemukan!" << endl;
     }else{
         cout << "Masukkan ID Driver Baru: ";
-        getline(cin, info(p).id_driver);
+        cin >> info(p).id_driver;
+        cin.ignore();
 
         cout << "Masukkan Nama Driver Baru: ";
         getline(cin, info(p).nama);
 
         cout << "Masukkan Nomor Kontak Driver Baru: ";
-        getline(cin, info(p).no_hp);
+        cin >> info(p).no_hp;
+        cin.ignore();
 
         cout << "Masukkan Plat Nomor Driver Baru: ";
         getline(cin, info(p).plat_nomor);
 
         cout << "Masukkan Jenis Motor yang Digunakan Driver Baru: ";
-        getline(cin, info(p).jenis_motor);
+        cin >> info(p).jenis_motor;
+        cin.ignore();
     }
 }
 void updatePenumpang(ListDriver &L, string nama, string id_driver)
@@ -214,50 +221,47 @@ void updatePenumpang(ListDriver &L, string nama, string id_driver)
             p = next(p);
         }
         cout << "Masukkan Nama Penumpang Baru: ";
-        getline(cin, info(p).nama);
+        cin >> info(p).nama;
         cout << "Masukkan Nomor Kontak Penumpang Baru: ";
-        getline(cin, info(p).no_hp);
+        cin >> info(p).no_hp;
+        cin.ignore();
         cout << "Masukkan Lokasi Penjemputan Penumpang Baru: ";
-        getline(cin, info(p).dari);
+        cin >> info(p).dari;
+        cin.ignore();
         cout << "Masukkan Lokasi Pengantaran Penumpang Baru: ";
-        getline(cin, info(p).ke);
+        cin >> info(p).ke;
+        cin.ignore();
         cout << "Masukkan Biaya Pengantaran Penumpang Baru: ";
         cin >> info(p).biaya;
         cin.ignore();
-        cout << "Data Penumpang Telah di Update";
+        cout << "Data Penumpang Telah di Update" << endl;
     }
 }
 void deletePenumpang(ListDriver &L, string nama, string id_driver, adrPenumpang &p)
 {
+    adrPenumpang S = searchPenumpang(L, id_driver, nama);
     adrDriver D = searchDriver(L, id_driver);
-    if(D != NULL){
-        adrPenumpang p = firstP(D);
-        bool check = false;
-        while(!check){
-            if(info(p).nama == nama){
-                check = true;
-                break;
+    adrPenumpang P = firstP(D);
+    if (S != NULL){
+        if (S == P){
+            P = next(S);
+            next(S) = NULL;
+            firstP(D) = P;
+        } else if (next(S) == NULL){
+            while (next(P) != S){
+                P = next(P);
             }
-            p = next(p);
-        }
-
-        if(p == NULL){
-            cout << "Penumpang Tidak Ditemukan" << endl;
-        }else{
-            if(p == firstP(D) && next(p) == NULL){
-                firstP(D) = NULL;
-            }else if(p == firstP(D) && next(p) != NULL){
-                firstP(D) = next(firstP(p));
-                next(p) = NULL;
-            }else{
-                adrPenumpang temp = firstP(D);
-                while(next(temp) != p){
-                    temp = next(temp);
-                }
-                next(temp) = next(p);
-                next(p) = NULL;
+            next(P) = NULL;
+        } else {
+            while(next(P) != S){
+                P = next(P);
             }
+            next(P) = next(S);
+            next(P) = NULL;
         }
+        cout << "Penumpang sudah dihapus!" << endl;
+    } else {
+        "Penumpang tidak ditemukan!";
     }
 }
 int totalTransaksi(ListDriver L)
