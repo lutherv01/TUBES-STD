@@ -11,10 +11,10 @@ int main()
     menu();
     int input;
     while(true){
-        cout << "Pilihan: ";
+        cout << "Pilihan Menu: ";
         cin >> input;
         if(cin.fail()){
-            cout << "Inputan Salah Harap Masukkan Angka" << endl;
+            cout << "Input Salah Harap Masukkan Angka!" << endl;
             cin.clear();
             cin.ignore();
         }else if (input < 1 || input > 12){
@@ -67,14 +67,14 @@ int main()
 
         case 2:{
             if (First(L) == NULL){
-                cout << "Tidak ada Driver" << endl;
+                cout << "Tidak ada Driver!" << endl;
             } else {
                 cout << "Masukkan ID Driver: ";
                 string ID;
                 cin >> ID;
                 adrDriver D = searchDriver(L, ID);
                 if (D != NULL){
-                    cout << "Driver Ditemukan" << endl;
+                    cout << "Driver Ditemukan!" << endl;
                     cout << "ID: " << info(D).id_driver << endl;
                     cout << "Nama: " << info(D).nama << endl;
                     cout << "Nomor Kontak: " << info(D).no_hp << endl;
@@ -82,7 +82,7 @@ int main()
                     cout << "Jenis Motor: " << info(D).jenis_motor << endl;
                     cout << endl;
                 } else {
-                    cout << "Driver tidak ditemukan" << endl;
+                    cout << "Driver tidak ditemukan!" << endl;
                 }
             }
             break;
@@ -90,7 +90,7 @@ int main()
 
         case 3: {
             cin.ignore();
-            cout << "Masukkan ID Data Driver Yang Ingin Diubah : ";
+            cout << "Masukkan ID Data Driver Yang Ingin Diubah: ";
             string ID;
             getline(cin, ID);
             updateDriver(L, ID);
@@ -127,17 +127,17 @@ int main()
             cin >> ID;
             adrDriver D = searchDriver(L, ID);
             if (D == NULL){
-                cout << "Driver Tidak Ditemukan" << endl;
+                cout << "Driver Tidak Ditemukan!" << endl;
             } else {
                 cout << "Masukkan Nama Penumpang: ";
                 cin.ignore();
                 getline(cin, x.nama);
                 cout << "Masukkan Nomor Handphone Penumpang: ";
                 cin >> x.no_hp;
-                cout << "Masukkan Lokasi Penjemputan Penumpang: ";
+                cout << "Masukkan Lokasi Penjemputan: ";
                 cin.ignore();
                 getline(cin, x.dari);
-                cout << "Masukkan Lokasi Pengantaran Penumpang: ";
+                cout << "Masukkan Lokasi Pengantaran: ";
                 cin.ignore();
                 getline(cin, x.ke);
                 cout << "Masukkan Biaya Pengantaran: ";
@@ -150,12 +150,12 @@ int main()
         }
 
         case 8: {
-            cout << "Masukkan ID Driver Yang Ingin Dicari: ";
+            cout << "Masukkan ID Driver: ";
             string ID, nama;
             cin >> ID;
             adrDriver D = searchDriver(L, ID);
             if (D == NULL){
-                cout << "Driver tidak ditemukan" << endl;
+                cout << "Driver tidak ditemukan!" << endl;
             } else {
                 cout << "Masukkan Nama Penumpang Yang Ingin Dicari: ";
                 cin.ignore();
@@ -180,13 +180,18 @@ int main()
 
         case 9:{
             cin.ignore();
-            cout << "Masukkan ID Data Driver Yang Ingin Diubah : ";
+            cout << "Masukkan ID Driver: ";
             string ID, nama;
             cin >> ID;
-            cout << "Masukkan Nama Penumpang Yang Ingin Diubah : ";
-            cin.ignore();
-            getline(cin, nama);
-            updatePenumpang(L, nama, ID);
+            adrDriver D = searchDriver(L, ID);
+            if (D == NULL){
+                cout << "Driver tidak ditemukan!" << endl;
+            } else {
+                cout << "Masukkan Nama Penumpang Yang Ingin Diubah: ";
+                cin.ignore();
+                getline(cin, nama);
+                updatePenumpang(L, nama, ID);
+            }
             break;
         }
 
@@ -195,10 +200,15 @@ int main()
             cout << "Masukkan ID Driver: ";
             string ID, nama;
             cin >> ID;
-            cout << "Masukkan Nama Penumpang Yang Ingin Dihapus: ";
-            cin.ignore();
-            getline(cin, nama);
-            deletePenumpang(L, nama, ID, P);
+            adrDriver D = searchDriver(L, ID);
+            if (D == NULL){
+                cout << "Driver tidak ditemukan!" << endl;
+            } else {
+                cout << "Masukkan Nama Penumpang Yang Ingin Dihapus: ";
+                cin.ignore();
+                getline(cin, nama);
+                deletePenumpang(L, nama, ID, P);
+            }
             break;
         }
 
@@ -213,7 +223,7 @@ int main()
         cout << "Pilihan: ";
         cin >> input;
         if(cin.fail()){
-            cout << "Inputan Salah Harap Masukkan Angka" << endl;
+            cout << "Inputan Salah Harap Masukkan Angka!" << endl;
             cin.clear();
             cin.ignore();
         }else if (input < 1 || input > 12){

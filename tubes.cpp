@@ -235,35 +235,42 @@ void updatePenumpang(ListDriver &L, string nama, string id_driver)
         cin >> info(p).biaya;
         cin.ignore();
         cout << "Data Penumpang Telah di Update" << endl;
+        cout << endl;
     }
 }
 void deletePenumpang(ListDriver &L, string nama, string id_driver, adrPenumpang &p)
 {
-    adrPenumpang S = searchPenumpang(L, id_driver, nama);
     adrDriver D = searchDriver(L, id_driver);
-    adrPenumpang P = firstP(D);
-    if (S != NULL){
-        if (S == P){
-            P = next(S);
-            next(S) = NULL;
-            firstP(D) = P;
-        } else if (next(S) == NULL){
-            while (next(P) != S){
-                P = next(P);
+    if (D == NULL){
+        cout << "Driver tidak ditemukan!" << endl;
+    }else {
+        adrPenumpang S = searchPenumpang(L, id_driver, nama);
+        adrPenumpang P = firstP(D);
+        if (S != NULL){
+            if (S == P){
+                P = next(S);
+                next(S) = NULL;
+                firstP(D) = P;
+            } else if (next(S) == NULL){
+                while (next(P) != S){
+                    P = next(P);
+                }
+                next(P) = NULL;
+            } else {
+                while(next(P) != S){
+                    P = next(P);
+                }
+                next(P) = next(S);
+                next(P) = NULL;
             }
-            next(P) = NULL;
+            cout << "Penumpang sudah dihapus!" << endl;
+            cout << endl;
         } else {
-            while(next(P) != S){
-                P = next(P);
-            }
-            next(P) = next(S);
-            next(P) = NULL;
+            cout << "Penumpang tidak ditemukan!" << endl;
+            cout << endl;
         }
-        cout << "Penumpang sudah dihapus!" << endl;
-    } else {
-        "Penumpang tidak ditemukan!";
-    }
 }
+    }
 int totalTransaksi(ListDriver L)
 {
     int total = 0;
