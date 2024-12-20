@@ -107,6 +107,7 @@ int main()
             cin.ignore();
             cout << "Masukkan ID Driver Yang Ingin Dihapus: ";
             string ID;
+            cin.ignore();
             getline(cin, ID);
             adrDriver P;
             deleteDriver(L, ID, P);
@@ -129,13 +130,16 @@ int main()
                 cout << "Driver Tidak Ditemukan" << endl;
             } else {
                 cout << "Masukkan Nama Penumpang: ";
-                cin >> x.nama;
+                cin.ignore();
+                getline(cin, x.nama);
                 cout << "Masukkan Nomor Handphone Penumpang: ";
                 cin >> x.no_hp;
                 cout << "Masukkan Lokasi Penjemputan Penumpang: ";
-                cin >> x.dari;
+                cin.ignore();
+                getline(cin, x.dari);
                 cout << "Masukkan Lokasi Pengantaran Penumpang: ";
-                cin >> x.ke;
+                cin.ignore();
+                getline(cin, x.ke);
                 cout << "Masukkan Biaya Pengantaran: ";
                 cin >> x.biaya;
                 adrPenumpang P = searchPenumpang(L, ID, nama);
@@ -147,15 +151,15 @@ int main()
 
         case 8: {
             cout << "Masukkan ID Driver Yang Ingin Dicari: ";
-            string ID;
+            string ID, nama;
             cin >> ID;
             adrDriver D = searchDriver(L, ID);
             if (D == NULL){
                 cout << "Driver tidak ditemukan" << endl;
             } else {
                 cout << "Masukkan Nama Penumpang Yang Ingin Dicari: ";
-                string nama;
-                cin >> nama;
+                cin.ignore();
+                getline(cin, nama);
                 adrPenumpang P = searchPenumpang(L, ID, nama);
                 if (P == NULL){
                     cout << "Penumpang Tidak Ditemukan" << endl;
@@ -177,11 +181,11 @@ int main()
         case 9:{
             cin.ignore();
             cout << "Masukkan ID Data Driver Yang Ingin Diubah : ";
-            string ID;
+            string ID, nama;
             cin >> ID;
             cout << "Masukkan Nama Penumpang Yang Ingin Diubah : ";
-            string nama;
-            cin >> nama;
+            cin.ignore();
+            getline(cin, nama);
             updatePenumpang(L, nama, ID);
             break;
         }
@@ -189,11 +193,11 @@ int main()
         case 10:{
             adrPenumpang P;
             cout << "Masukkan ID Driver: ";
-            string ID;
+            string ID, nama;
             cin >> ID;
             cout << "Masukkan Nama Penumpang Yang Ingin Dihapus: ";
-            string nama;
-            cin >> nama;
+            cin.ignore();
+            getline(cin, nama);
             deletePenumpang(L, nama, ID, P);
             break;
         }

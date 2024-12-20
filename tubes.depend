@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1734660012 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubes\main.cpp
+1734688541 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubes\main.cpp
 	<iostream>
 	"tubes.h"
 	<string>
 
-1734660079 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubes\tubes.cpp
+1734677223 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubes\tubes.cpp
 	"tubes.h"
 	<iostream>
 
