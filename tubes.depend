@@ -12,3 +12,16 @@
 	<iostream>
 	<string>
 
+1734741623 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubesstd_ojol\main.cpp
+	<iostream>
+	"tubes.h"
+	<string>
+
+1734604889 c:\users\luthfi\documents\college\semester 3\struktur data\tubesstd_ojol\tubes.h
+	<iostream>
+	<string>
+
+1734741624 source:c:\users\luthfi\documents\college\semester 3\struktur data\tubesstd_ojol\tubes.cpp
+	"tubes.h"
+	<iostream>
+

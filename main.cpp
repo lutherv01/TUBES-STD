@@ -77,7 +77,7 @@ int main()
                     cout << "Driver Ditemukan!" << endl;
                     cout << "ID: " << info(D).id_driver << endl;
                     cout << "Nama: " << info(D).nama << endl;
-                    cout << "Nomor Kontak: " << info(D).no_hp << endl;
+                    cout << "Nomor Handphone: " << info(D).no_hp << endl;
                     cout << "Nomor Plat Motor: " << info(D).plat_nomor << endl;
                     cout << "Jenis Motor: " << info(D).jenis_motor << endl;
                     cout << endl;
@@ -107,8 +107,7 @@ int main()
             cin.ignore();
             cout << "Masukkan ID Driver Yang Ingin Dihapus: ";
             string ID;
-            cin.ignore();
-            getline(cin, ID);
+            cin >> ID;
             adrDriver P;
             deleteDriver(L, ID, P);
             break;
@@ -162,9 +161,9 @@ int main()
                 getline(cin, nama);
                 adrPenumpang P = searchPenumpang(L, ID, nama);
                 if (P == NULL){
-                    cout << "Penumpang Tidak Ditemukan" << endl;
+                    cout << "Penumpang Tidak Ditemukan!" << endl;
                 } else {
-                    cout << "Penumpang Ditemukan" << endl;
+                    cout << "Penumpang Ditemukan!" << endl;
                     cout << "ID Driver: " << ID << endl;
                     cout << "Nama: " << info(P).nama << endl;
                     cout << "Nomor Handphone: " << info(P).no_hp << endl;
@@ -223,7 +222,7 @@ int main()
         cout << "Pilihan: ";
         cin >> input;
         if(cin.fail()){
-            cout << "Inputan Salah Harap Masukkan Angka!" << endl;
+            cout << "Input Salah Harap Masukkan Angka!" << endl;
             cin.clear();
             cin.ignore();
         }else if (input < 1 || input > 12){

@@ -113,11 +113,11 @@ void showDriver(ListDriver L)
         cout << "Tidak ada Driver!" << endl;
     } else {
         while (D != NULL){
+            cout << "Data Driver        " << endl;
             cout << "========================" << endl;
-            cout << "Data Driver      : " << endl;
-            cout << "ID               : " << info(D).id_driver << endl;
-            cout << "Nama             : " << info(D).nama << endl;
-            cout << "Nomor Kontak     : " << info(D).no_hp << endl;
+            cout << "ID Driver        : " << info(D).id_driver << endl;
+            cout << "Nama Driver      : " << info(D).nama << endl;
+            cout << "Nomor Handphone  : " << info(D).no_hp << endl;
             cout << "Nomor Plat Motor : " << info(D).plat_nomor << endl;
             cout << "Jenis Motor      : " << info(D).jenis_motor << endl;
             cout << "========================" << endl;
@@ -153,7 +153,7 @@ void showAll(ListDriver &L)
             cout << "========================" << endl;
             cout << "ID Driver          : " << info(D).id_driver << endl;
             cout << "Nama Driver        : " << info(D).nama << endl;
-            cout << "Nomor Kontak Driver: " << info(D).no_hp << endl;
+            cout << "Nomor Kontak       : " << info(D).no_hp << endl;
             cout << "Nomor Plat Motor   : " << info(D).plat_nomor << endl;
             cout << "Jenis Motor        : " << info(D).jenis_motor << endl;
             cout << "========================" << endl;
